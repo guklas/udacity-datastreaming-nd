@@ -82,7 +82,7 @@ InputRowsPerSecond_in_long_run =  numInputRows / trigger_interval
 - ProcessedRowsPerSecond is calculated for each microbatch and can vary substantially between microbatches. It is difficult to find the statistical average over many batches, as Spark UI for Spark 2.3.4 does not allow to print time series graphs. Newer Spark versions support this feature.
 - In general, the more partitions there are in a Kafka cluster, the higher the throughput one can achieve as the level of parallelism increases, *however this is only true if there are sufficiently many CPU cores*.
 - The degree of parallelism in the consumer in Spark (within a consumer group) is bounded by the number of partitions being consumed.
-- In Spark UI, I can see that the "Total Tasks", which represents the number of partitions in a given stage. In case of no shuffles, the number of tasks will equal the number of Kafka partitions. E.g. 2 Kafka partitions leads to 2 tasks. When shuffling occurs as in our aggregation query, the number of tasks in the stage receiving the shuffled data is determined by spark.sql.shuffle.partitions.
+- In Spark UI, I can see the "Total Tasks", which represents the number of partitions in a given stage. In case of no shuffles, the number of tasks will equal the number of Kafka partitions. E.g. 2 Kafka partitions leads to 2 tasks. When shuffling occurs as in our aggregation query, the number of tasks in the stage receiving the shuffled data is determined by spark.sql.shuffle.partitions.
 
 
 
@@ -151,7 +151,7 @@ Below shows information about the police crime file:
 
 Below shows information about the radio code json file:
 
-![image](rdio_code_file_01.png)  
+![image](radio_code_file_01.png)  
 **FIGURE 8**   
 
-END
+*END*
