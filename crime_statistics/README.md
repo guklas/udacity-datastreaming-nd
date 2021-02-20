@@ -22,7 +22,7 @@ It demonstrates that the Kafka server correctly ingests data into Kafka. Output 
 ![image](screenshot_kafka_console_consumer_01.png  )
 
 ### Screenshot 2:
-This demonstrates output of the running Spark session from the Progress Reporter for the Join screenshot_join_query_01.
+This demonstrates output of the running Spark session from the Progress Reporter for the Join query.
 
 ![image](screenshot_progress_reporter.png)
 
@@ -103,13 +103,13 @@ Defaults to the number of all cores on all machines. In the Workspace VM, this i
 For the Join Query, I analyzed the impact of this parameter on processedRowsPerSecond, triggerExecution time and processing time per message in detail.
 The graph shows that the Spark throughput rises and the processing time per row falls with increasing maxOffsetsPerTrigger. It seems Spark processing is more efficient when the size of the batch is larger. On the other hand, latency increases for the batch, as the triggerExecution time rises.
 
-![image](maxOffsetsPerTrigger.png)
+![image](maxOffsetsPerTrigger.png)   
 **FIGURE 1**
 
 #### Query trigger interval:
 For the Join Query I also studied the performance as a function of the length of the trigger interval. As the graph shows, the length of the query trigger interval has little influence in case of the Join Query.
 
-![image](queryTriggerInterval.png)
+![image](queryTriggerInterval.png)   
 **FIGURE 2**
 
 #### spark.sql.shuffle.partitions:
@@ -117,25 +117,25 @@ This parameter configures the number of partitions that are used when shuffling 
 I studied the influence of this parameter for both the Join Query and the Aggregation Query.
 For the Join Query the graph shows no significant influence:
 
-![image](shufflePartitions1.png)
+![image](shufflePartitions1.png)   
 **FIGURE 3**
 
 This seems to make sense, as when executing only the Join Query (and not the Aggregation Query), no shuffles are shown in Spark UI, when inspecting the stages.
 
-For the Aggregation Query, Spark UI shows shuffle exchanges. This parameter then has in fact an influence on performance as shown in below graph. The smallest parameter setting was 2, which is in line with the number of CPU cores on the Workspace VM. It turn out that in the presence of only 2 CPUs, increasing the number of shuffle partitions only leads to more overhead in Spark. Thus, 2 appears optimal.
+For the Aggregation Query, Spark UI shows shuffle exchanges. This parameter then has in fact an influence on performance as shown in below graph. The smallest parameter setting was 2, which is in line with the number of CPU cores on the Workspace VM. It turns out that in the presence of only 2 CPUs, increasing the number of shuffle partitions only leads to more overhead in Spark. Thus, 2 appears optimal.
 
-![image](shufflePartitions2.png)
+![image](shufflePartitions2.png)   
 **FIGURE 4**
 
 Below shows the 2nd stage for the Aggregation Query for batchId = 6, for the setting spark.sql.shuffle.partitions = 100:
 On the surface, one might get the impression that a lot of parallel processing is happening.
 
-![image](stage2_01.png)
+![image](stage2_01.png)   
 **FIGURE 5**
 
 Although above looks on the surface as if a lot of “green” Executor Computing time happens, zooming into the graph on Spark UI reveals the following:
 
-![image](stage2_zoom_01.png)
+![image](stage2_zoom_01.png)   
 **FIGURE 6**
 
 In above graph it is clearly visible that the parallelism for the green Executor Computing phases is limited to 2. There are never more than two green bars overlapping at any time which is due to the fact that the Workspace had only 2 CPU cores. Thus, additional parallelism e.g. from more partitions only leads to stacking the tasks on the timeline and does not improve Spark’s efficiency.
@@ -146,16 +146,12 @@ For the Join Query, modifying the number of Kafka partitions for the topic didn�
 ## Analysis of the source json data
 Below shows information about the police crime file:
 
-![image](police_crime_file_01.png)
+![image](police_crime_file_01.png)  
 **FIGURE 7**
 
 Below shows information about the radio code json file:
 
-![image](rdio_code_file_01.png)
-**FIGURE 8**
-
-
-
-
+![image](rdio_code_file_01.png)  
+**FIGURE 8**   
 
 END
