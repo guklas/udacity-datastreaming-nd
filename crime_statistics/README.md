@@ -154,4 +154,39 @@ Below shows information about the radio code json file:
 ![image](radio_code_file_01.png)  
 **FIGURE 8**   
 
+Below shows the range of crime times:
+
+![image](crime_times.png)   
+**FIGURE 9**
+
+Below shows some unique crime types:
+
+![image](unique_crime_types.png)   
+**FIGURE 10**
+
+Below shows all unique address types:
+
+![image](unique_address_types.png)   
+**FIGURE 11**
+
+Below shows frequency of some call types:
+
+![image](frequency_call_types.png)   
+**FIGURE 12**
+
+With a bit of modification of code, further results can be found.   
+Example 1: Daily occurrences of calls due to Trespasser, handled or arrested:   
+
+![image](screenshot_windowing_01.png)   
+**FIGURE 13**
+
+Example 2: Frequency of police callouts to deal with burglary and results:
+
+![image](screenshot_aggr_per_hour_01.png)    
+**FIGURE 14**
+
+
+
+
+
 *END*
