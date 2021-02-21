@@ -143,47 +143,52 @@ In above graph it is clearly visible that the parallelism for the green Executor
 #### Number of Kafka partitions
 For the Join Query, modifying the number of Kafka partitions for the topic didn’t have much influence. I set it to 2, 4, and 10. The default number of Spark partitions is the same as the number of Kafka partitions. When I increased the number of partitions in the presence of only 2 CPU cores on the Workspace, the result was not conclusive enough.
 
+Below a discussion regarding the Progress Reporter output.
+
+![image](discussion_progress_reporter.png)  
+**FIGURE 7**
+
 ## Analysis of the source json data
 Below shows information about the police crime file:
 
 ![image](police_crime_file_01.png)  
-**FIGURE 7**
+**FIGURE 8**
 
 Below shows information about the radio code json file:
 
 ![image](radio_code_file_01.png)  
-**FIGURE 8**   
+**FIGURE 9**   
 
 Below shows the range of crime times:
 
 ![image](crime_times.png)   
-**FIGURE 9**
+**FIGURE 10**
 
 Below shows some unique crime types:
 
 ![image](unique_crime_types.png)   
-**FIGURE 10**
+**FIGURE 11**
 
 Below shows all unique address types:
 
 ![image](unique_address_types.png)   
-**FIGURE 11**
+**FIGURE 12**
 
 Below shows frequency of some call types:
 
 ![image](frequency_call_types.png)   
-**FIGURE 12**
+**FIGURE 13**
 
 With a bit of modification of code, further results can be found.   
 Example 1: Daily occurrences of calls due to Trespasser, handled or arrested:   
 
 ![image](screenshot_windowing_01.png)   
-**FIGURE 13**
+**FIGURE 14**
 
 Example 2: Frequency of police callouts to deal with burglary and results over the hours of the day:
 
 ![image](screenshot_aggr_per_hour_01.png)    
-**FIGURE 14**
+**FIGURE 15**
 
 
 
