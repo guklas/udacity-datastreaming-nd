@@ -180,7 +180,7 @@ Example 1: Daily occurrences of calls due to Trespasser, handled or arrested:
 ![image](screenshot_windowing_01.png)   
 **FIGURE 13**
 
-Example 2: Frequency of police callouts to deal with burglary and results:
+Example 2: Frequency of police callouts to deal with burglary and results over the hours of the day:
 
 ![image](screenshot_aggr_per_hour_01.png)    
 **FIGURE 14**
